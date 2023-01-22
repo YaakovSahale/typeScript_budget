@@ -1,0 +1,64 @@
+.head {
+  background-image: url("../../public/images/back.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 50%;
+  padding-bottom: 0.5rem;
+}
+
+.head .date {
+  margin: 0;
+  color: var(--white-color);
+  font-size: 1.2rem;
+}
+
+.head .number {
+  color: var(--white-color);
+}
+
+.head .budget {
+  font-size: 2.5rem;
+}
+
+.head .income-expense {
+  width: 25rem;
+  margin: auto;
+  display: flex;
+  padding: 0.9rem;
+}
+
+.head .income {
+  background-color: var(--income-color);
+  margin-bottom: 0.5rem;
+}
+
+.head .expense {
+  background-color: var(--expense-color);
+}
+
+.head .expense .percentage {
+  font-size: 0.8rem;
+  background-color: var(--percentage-bg-color);
+  padding: 0.25rem;
+}
+
+.head .income-expense .title {
+  flex: 1;
+  text-align: left;
+}
+
+.head .income-expense .number {
+  flex: 1;
+  text-align: right;
+  display: flex;
+  font-size: 1.1rem;
+  align-items: center;
+}
+
+.head .income-expense .number span:nth-child(1) {
+  flex: 2;
+}
+
+.head .income-expense .number span:nth-child(2) {
+  flex: 1;
+}
