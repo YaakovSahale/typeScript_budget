@@ -27,3 +27,14 @@ const computeTotal = (items: IBudgetItem[]): number => {
 export const computeBudget = (): number => {
   return computeTotal(incomes) - computeTotal(expenses);
 };
+
+let currentBudgetItem = BudgetType.Income;
+
+export const setCurrentBudgetItem = (type: BudgetType) => {
+  currentBudgetItem = type;
+};
+
+export const addBudgetItem = (item: IBudgetItem) => {
+  const items = currentBudgetItem == BudgetType.Income ? incomes : expenses;
+  items.push(item);
+};

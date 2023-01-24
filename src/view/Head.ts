@@ -1,10 +1,10 @@
-import { formatNumber } from "../logic/gen-utils";
+import { formatNumber } from "../logic/general-utils";
 import { computeBudget, computeSum } from "../logic/Budget-utils";
 import { getMonth, getYear } from "../logic/time-utils";
 import { ClassHead } from "./enums";
-import "./Head.css";
 import { formatFinitePercentage } from "./view-utils";
 import { BudgetType } from "../logic/enums";
+import "./Head.css";
 
 export const Head = () => {
   const totalIncomes = computeSum(BudgetType.Income);
@@ -12,6 +12,7 @@ export const Head = () => {
   const percentageElm = `  <span class='${
     ClassHead.Percentage
   }'> ${formatFinitePercentage(totalExpenses, totalIncomes)} </span>`;
+
   const now = new Date();
   const dateElm = `<p class ='${ClassHead.Date}'>Available budget in ${getMonth(
     now

@@ -1,4 +1,4 @@
-import { computePercentage, formatPercentage } from "../logic/gen-utils";
+import { computePercentage, formatPercentage } from "../logic/general-utils";
 
 export const formatFinitePercentage = (
   expense: number,
