@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+.Input {
+  background-color: #f7f7f7;
+  padding: 1.5rem 0;
+}
+
+.Input .form {
+  height: 2.5rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.Input .form > * {
+  margin: 0 0.5rem;
+}
+
+.Input input {
+  outline: none;
+  border-radius: 5px;
+}
+
+.Input .form button {
+  background-color: transparent;
+  font-size: 2rem;
+  border: none;
+}
+
+.Input input[type="text"] {
+  width: 20rem;
+}
+
+.button-income {
+  color: var(--income-color);
+}
+
+.button-expense {
+  color: var(--expense-color);
+}
+
+.selected_income{
+  border: 1px solid var(--income-color);
+}
+
+.selected_expanse{
+  border: 1px solid var(--expense-color);
+}

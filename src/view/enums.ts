@@ -8,4 +8,5 @@ export enum ClassHead {
   Expense = `expense`,
   IncomeExpense = `income-expense`,
   Percentage = `percentage`,
+  Dynamic = "dynamic",
 }

@@ -1,14 +1,8 @@
 import { BudgetType } from "./enums";
 import IBudgetItem from "./interfaces/BudgetItem";
 
-export const incomes: IBudgetItem[] = [
-  { description: `income1`, amount: 11, id: `id1` },
-  { description: `income2`, amount: 22, id: `id2` },
-];
-export const expenses: IBudgetItem[] = [
-  { description: `expense1`, amount: 111, id: `id1` },
-  { description: `expense2`, amount: 2, id: `id2` },
-];
+export const incomes: IBudgetItem[] = [];
+export const expenses: IBudgetItem[] = [];
 
 export const computeSum = (type: BudgetType): number => {
   const items = type == BudgetType.Income ? incomes : expenses;
@@ -28,7 +22,7 @@ export const computeBudget = (): number => {
   return computeTotal(incomes) - computeTotal(expenses);
 };
 
-let currentBudgetItem = BudgetType.Income;
+export let currentBudgetItem = BudgetType.Income;
 
 export const setCurrentBudgetItem = (type: BudgetType) => {
   currentBudgetItem = type;
