@@ -7,6 +7,7 @@ import { BudgetType } from "../logic/enums";
 import { v4 as uuidv4 } from "uuid";
 import IBudgetItem from "../logic/interfaces/BudgetItem";
 import "./Input.css";
+import { ClassInput } from "./enums";
 
 export const Input = (onAddBudgetItem: () => void) => {
   function addBudgetSubmitHandler() {
@@ -29,13 +30,13 @@ export const Input = (onAddBudgetItem: () => void) => {
   (window as any).selectClickHandler = selectClickHandler;
   (window as any).focusHandler = focusHandler;
 
-  const selectElem = `<select class="selected_income" name='type' onclick=selectClickHandler(this)><option>+</option><option>-</option></select>`;
-  const inputElem = `<input onfocus='focusHandler(this)' type="text" class="desc" name="desc" placeholder="Add Description" ></input> 
+  const selectElem = `<select class=${ClassInput.SelectedIncome} name='type' onclick=selectClickHandler(this)><option>+</option><option>-</option></select>`;
+  const inputElem = `<input onfocus='focusHandler(this)' type="text" class=${ClassInput.Desc} name="desc" placeholder="Add Description" ></input> 
   <input onfocus='focusHandler(this)' type="number" name="amount" min=0 placeholder="Add Amount" ></input>`;
-  const buttonElm = `<button class="button-income fa fa-check-circle"></button>`;
+  const buttonElm = `<button class='${ClassInput.ButtonIncome} fa fa-check-circle'></button>`;
   const formElem = `${selectElem} ${inputElem} ${buttonElm}`;
 
-  return `<div class='Input'><form class="form" onsubmit= 'return addBudgetSubmitHandler()'>${formElem}</form></div>`;
+  return `<div class='${ClassInput.Root}'><form class="form" onsubmit= 'return addBudgetSubmitHandler()'>${formElem}</form></div>`;
 };
 
 export const createUniqueId = (): string => {
@@ -48,10 +49,10 @@ function selectClickHandler(elem: HTMLElement) {
   let type: BudgetType;
   if (getFormElement().type.value == "+") {
     type = BudgetType.Income;
-    buttonClassList?.replace("button-expense", "button-income");
+    buttonClassList?.replace(ClassInput.ButtonExpense, ClassInput.ButtonIncome);
   } else {
     type = BudgetType.Expense;
-    buttonClassList?.replace("button-income", "button-expense");
+    buttonClassList?.replace(ClassInput.ButtonIncome, ClassInput.ButtonExpense);
   }
 
   setCurrentBudgetItem(type);
@@ -61,17 +62,17 @@ function selectClickHandler(elem: HTMLElement) {
 const focusHandler = (elem: HTMLElement) => {
   for (let index = 0; index < getFormElement().children.length; index++) {
     const child = getFormElement()[index];
-    child.classList.remove("selected_income");
-    child.classList.remove("selected_expanse");
+    child.classList.remove(ClassInput.SelectedIncome);
+    child.classList.remove(ClassInput.SelectedExpanse);
   }
 
   elem.classList.add(
     currentBudgetItem == BudgetType.Income
-      ? "selected_income"
-      : "selected_expanse"
+      ? ClassInput.SelectedIncome
+      : ClassInput.SelectedExpanse
   );
 };
 
 const getFormElement = (): HTMLFormElement => {
-  return document.querySelector(".Input > .form")!;
+  return document.querySelector(`.${ClassInput.Root} > .${ClassInput.Form}`)!;
 };

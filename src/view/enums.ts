@@ -10,3 +10,13 @@ export enum ClassHead {
   Percentage = `percentage`,
   Dynamic = "dynamic",
 }
+
+export enum ClassInput {
+  Root = "Input",
+  Desc = "desc",
+  Form = "form",
+  ButtonIncome = "button-income",
+  ButtonExpense = "button-expense",
+  SelectedIncome = "selected_income",
+  SelectedExpanse = "selected_expanse",
+}
