@@ -14,5 +14,4 @@ const onAddBudgetItem = (): void => {
   
   //update body
 
-  console.log("hello from onBudget");
 };

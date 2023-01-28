@@ -1,5 +1,5 @@
 import { formatNumber } from "../logic/general-utils";
-import { computeBudget, computeSum, incomes } from "../logic/Budget-utils";
+import { computeBudget, computeSum, expenses, incomes } from "../logic/Budget-utils";
 import { getMonth, getYear } from "../logic/time-utils";
 import { ClassHead } from "./enums";
 import { formatFinitePercentage } from "./view-utils";
@@ -45,7 +45,6 @@ export const updateHead = () => {
   const dynamicNode = document.querySelector(
     `.${ClassHead.Root} > .${ClassHead.Dynamic}`
   );
-  console.log(incomes);
   
 
   dynamicNode!.innerHTML = getDynamic();

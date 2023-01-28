@@ -10,15 +10,17 @@ import "./Input.css";
 
 export const Input = (onAddBudgetItem: () => void) => {
   function addBudgetSubmitHandler() {
-    const formElem: HTMLFormElement = document.querySelector(".Input > .form")!;
     let item: IBudgetItem = {
-      description: formElem.desc.value,
-      amount: formElem.amount.value,
+      description: getFormElement().desc.value,
+      amount: parseInt(getFormElement().amount.value),
       id: createUniqueId(),
     };
+    console.log(getFormElement().amount.value);
+    console.log(item);
+
     addBudgetItem(item);
     onAddBudgetItem();
-    formElem.reset();
+    getFormElement().reset();
 
     return false;
   }
@@ -41,11 +43,10 @@ export const createUniqueId = (): string => {
 };
 
 function selectClickHandler(elem: HTMLElement) {
-  const formElem: HTMLFormElement = document.querySelector(".Input > .form")!;
-  const buttonClassList = formElem.querySelector("button")?.classList;
+  const buttonClassList = getFormElement().querySelector("button")?.classList;
 
   let type: BudgetType;
-  if (formElem.type.value == "+") {
+  if (getFormElement().type.value == "+") {
     type = BudgetType.Income;
     buttonClassList?.replace("button-expense", "button-income");
   } else {
@@ -58,9 +59,8 @@ function selectClickHandler(elem: HTMLElement) {
 }
 
 const focusHandler = (elem: HTMLElement) => {
-  const formElem: HTMLFormElement = document.querySelector(".Input > .form")!;
-  for (let index = 0; index < formElem.children.length; index++) {
-    const child = formElem[index];
+  for (let index = 0; index < getFormElement().children.length; index++) {
+    const child = getFormElement()[index];
     child.classList.remove("selected_income");
     child.classList.remove("selected_expanse");
   }
@@ -70,4 +70,8 @@ const focusHandler = (elem: HTMLElement) => {
       ? "selected_income"
       : "selected_expanse"
   );
+};
+
+const getFormElement = (): HTMLFormElement => {
+  return document.querySelector(".Input > .form")!;
 };

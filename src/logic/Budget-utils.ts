@@ -14,6 +14,8 @@ const computeTotal = (items: IBudgetItem[]): number => {
   items.forEach((item) => {
     sum += item.amount;
   });
+  
+  
 
   return sum;
 };
