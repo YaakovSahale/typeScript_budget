@@ -1,4 +1,4 @@
-import { Body } from "./Body/Body";
+import { Body, updateBodyOnAdd } from "./Body/Body";
 import { Head, updateHead } from "./Head/Head";
 import { Input } from "./Input/Input";
 
@@ -13,4 +13,5 @@ const onAddBudgetItem = (): void => {
   updateHead();
 
   //update body
+  updateBodyOnAdd()
 };

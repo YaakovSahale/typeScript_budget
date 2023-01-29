@@ -14,8 +14,6 @@ const computeTotal = (items: IBudgetItem[]): number => {
   items.forEach((item) => {
     sum += item.amount;
   });
-  
-  
 
   return sum;
 };
@@ -33,4 +31,9 @@ export const setCurrentBudgetItem = (type: BudgetType) => {
 export const addBudgetItem = (item: IBudgetItem) => {
   const items = currentBudgetItem == BudgetType.Income ? incomes : expenses;
   items.push(item);
+};
+
+export const getLastBudgetItem = () => {
+  const items = currentBudgetItem == BudgetType.Income ? incomes : expenses;
+  return items[items.length - 1];
 };

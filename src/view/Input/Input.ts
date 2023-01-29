@@ -16,8 +16,6 @@ export const Input = (onAddBudgetItem: () => void) => {
       amount: parseInt(getFormElement().amount.value),
       id: createUniqueId(),
     };
-    console.log(getFormElement().amount.value);
-    console.log(item);
 
     addBudgetItem(item);
     onAddBudgetItem();

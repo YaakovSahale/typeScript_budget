@@ -1,5 +1,10 @@
-import './Incomes.css'
+import { getLastBudgetItem } from "../../logic/Budget-utils";
+import "./Incomes.css";
 
 export const Incomes = () => {
-    return `<div class="Incomes">Incomes</div>`;
-}
+  return `<div class="incomes">Incomes</div>`;
+};
+
+export const onIncomeAdded = () => {
+  const item = getLastBudgetItem();
+};
