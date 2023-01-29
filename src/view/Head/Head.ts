@@ -1,9 +1,14 @@
-import { formatNumber } from "../logic/general-utils";
-import { computeBudget, computeSum, expenses, incomes } from "../logic/Budget-utils";
-import { getMonth, getYear } from "../logic/time-utils";
-import { ClassHead } from "./enums";
-import { formatFinitePercentage } from "./view-utils";
-import { BudgetType } from "../logic/enums";
+import { formatNumber } from "../../logic/general-utils";
+import {
+  computeBudget,
+  computeSum,
+  expenses,
+  incomes,
+} from "../../logic/Budget-utils";
+import { getMonth, getYear } from "../../logic/time-utils";
+import { ClassHead } from "../enums";
+import { formatFinitePercentage } from "../view-utils";
+import { BudgetType } from "../../logic/enums";
 import "./Head.css";
 
 export const Head = () => {
@@ -45,7 +50,6 @@ export const updateHead = () => {
   const dynamicNode = document.querySelector(
     `.${ClassHead.Root} > .${ClassHead.Dynamic}`
   );
-  
 
   dynamicNode!.innerHTML = getDynamic();
 };

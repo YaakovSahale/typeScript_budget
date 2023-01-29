@@ -2,12 +2,12 @@ import {
   addBudgetItem,
   currentBudgetItem,
   setCurrentBudgetItem,
-} from "../logic/Budget-utils";
-import { BudgetType } from "../logic/enums";
+} from "../../logic/Budget-utils";
+import { BudgetType } from "../../logic/enums";
 import { v4 as uuidv4 } from "uuid";
-import IBudgetItem from "../logic/interfaces/BudgetItem";
+import IBudgetItem from "../../logic/interfaces/BudgetItem";
 import "./Input.css";
-import { ClassInput } from "./enums";
+import { ClassInput } from "../enums";
 
 export const Input = (onAddBudgetItem: () => void) => {
   function addBudgetSubmitHandler() {
