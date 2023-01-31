@@ -33,7 +33,13 @@ export const addBudgetItem = (item: IBudgetItem) => {
   items.push(item);
 };
 
-export const getLastBudgetItem = () => {
+export const getLastBudgetItem = (): IBudgetItem => {
   const items = currentBudgetItem == BudgetType.Income ? incomes : expenses;
   return items[items.length - 1];
+};
+
+export const deleteBudgetItem = (id: string, type: BudgetType):void => {
+  const items = type == BudgetType.Income ? incomes : expenses;
+  const index = items.findIndex((item) => item.id == id);
+  items.splice(index,1)
 };

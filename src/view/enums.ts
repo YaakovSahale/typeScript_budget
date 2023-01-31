@@ -20,3 +20,11 @@ export enum ClassInput {
   SelectedIncome = "selected_income",
   SelectedExpanse = "selected_expanse",
 }
+
+export enum ClassIncExp {
+  Header = "header",
+  Left = "left",
+  Right = "right",
+  Delete = "delete",
+  Item = "item",
+}
