@@ -1,4 +1,41 @@
+.expanses {
+  flex: 1;
+  text-align: right;
+  margin: 0 1rem;
+}
 
-.expanses{
-    flex: 1;
+.expanses .item {
+  border-top: 1px solid gray;
+  display: flex;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.expanses .item > .left {
+  flex: 1;
+  text-align: left;
+}
+
+.expanses .item > .right {
+  flex: 1;
+  text-align: right;
+}
+
+.expanses .item .right:hover .delete {
+  margin-left: 1rem;
+  font-size: inherit;
+  visibility: visible;
+  transition: margin-left 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.expanses .item .right .delete {
+  visibility: hidden;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.expanses .header,
+.expanses .item .right {
+  color: var(--expense-color);
 }

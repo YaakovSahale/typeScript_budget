@@ -40,10 +40,8 @@ const getDomItemId = (id: string) => {
 };
 
 const deleteIncome = (id: string): void => {
-  //remove from incomes
   deleteBudgetItem(id, BudgetType.Income);
 
-  //remove from dom
   document.getElementById(getDomItemId(id))?.remove();
 
   updateHead();
