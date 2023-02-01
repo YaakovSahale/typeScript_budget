@@ -17,7 +17,7 @@ const CLASS_PERCENTAGE = "percentage";
 const CLASS_NUMBER = "NUMBER";
 const CLASS_AMOUNT = "amount";
 
-export const Expanses = () => {
+export const Expanses = (onDeleteBudgetItem: () => void) => {
   (window as any).deleteExpanse = deleteExpanse;
   return `<div class=${CLASS_ROOT}><p class=${ClassIncExp.Header}>Expanses</p></div>`;
 };
@@ -67,10 +67,11 @@ const deleteExpanse = (id: string): void => {
 };
 
 export const updateAllExpansesPercentage = () => {
+  //relevant only on add or delete income
   const totalIncome = computeSum(BudgetType.Income);
 
   const elemsPercentage = getExpanseElem().querySelectorAll(
-    `.${CLASS_PERCENTAGE} > span`
+    `.${CLASS_PERCENTAGE}`
   );
 
   expenses.forEach((expanse, index) => {

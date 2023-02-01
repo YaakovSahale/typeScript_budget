@@ -8,8 +8,10 @@ import {
 import { Incomes, onIncomeAdded } from "../Incomes/Incomes";
 import "./Body.css";
 
-export const Body = () => {
-  return `<div class="body">${Incomes()}${Expanses()}</div>`;
+export const Body = (onDeleteBudgetItem: () => void) => {
+  return `<div class="body">${Incomes(onDeleteBudgetItem)}${Expanses(
+    onDeleteBudgetItem
+  )}</div>`;
 };
 
 export const updateBodyOnAdd = () => {

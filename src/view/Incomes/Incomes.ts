@@ -8,8 +8,20 @@ import "./Incomes.css";
 
 const CLASS_ROOT = "incomes";
 
-export const Incomes = () => {
+export const Incomes = (onDeleteBudgetItem: () => void) => {
+  const deleteIncome = (id: string): void => {
+    //remove item from incomes array
+    deleteBudgetItem(id, BudgetType.Income);
+
+    //remove from the dom
+    document.getElementById(getDomItemId(id))?.remove();
+
+    //update the app
+    onDeleteBudgetItem();
+  };
+
   (window as any).deleteIncome = deleteIncome;
+
   return `<div class=${CLASS_ROOT}><p class=${ClassIncExp.Header}>Incomes</p></div>`;
 };
 
@@ -37,12 +49,4 @@ const createIncomeElem = (item: IBudgetItem): string => {
 
 const getDomItemId = (id: string) => {
   return `id_income_${id}`;
-};
-
-const deleteIncome = (id: string): void => {
-  deleteBudgetItem(id, BudgetType.Income);
-
-  document.getElementById(getDomItemId(id))?.remove();
-
-  updateHead();
 };
