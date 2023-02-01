@@ -1,6 +1,7 @@
 import {
   computeSum,
   deleteBudgetItem,
+  expenses,
   getLastBudgetItem,
 } from "../../logic/Budget-utils";
 import { BudgetType } from "../../logic/enums";
@@ -14,7 +15,7 @@ import "./Expanses.css";
 const CLASS_ROOT = "expanses";
 const CLASS_PERCENTAGE = "percentage";
 const CLASS_NUMBER = "NUMBER";
-const CLASS_AMOUNT ='amount'
+const CLASS_AMOUNT = "amount";
 
 export const Expanses = () => {
   (window as any).deleteExpanse = deleteExpanse;
@@ -38,14 +39,15 @@ const createExpanseElem = (item: IBudgetItem): string => {
     expanse,
     totalIncome
   )}<span>`;
-    const amountElem = `<span class=${CLASS_AMOUNT}>${formatNumber(expanse)}</span>`
+  const amountElem = `<span class=${CLASS_AMOUNT}>${formatNumber(
+    expanse
+  )}</span>`;
 
   const leftElem = `<span class=${ClassIncExp.Left}>${item.description}</span>`;
   const buttonElem = `<span class='delete fa fa-minus-circle' onclick=deleteExpanse('${item.id}')></span>`;
   const rightElem = `<div class=${ClassIncExp.Right}>
   <span class=${CLASS_NUMBER}>${amountElem} ${percentageElem}</span><span>${buttonElem}</span>
   </div>`;
-
 
   return `<div class=${ClassIncExp.Item} id=${getDomItemId(
     item.id
@@ -62,4 +64,17 @@ const deleteExpanse = (id: string): void => {
   document.getElementById(getDomItemId(id))?.remove();
 
   updateHead();
+};
+
+export const updateAllExpansesPercentage = () => {
+  const totalIncome = computeSum(BudgetType.Income);
+
+  const elemsPercentage = getExpanseElem().querySelectorAll(
+    `.${CLASS_PERCENTAGE} > span`
+  );
+
+  expenses.forEach((expanse, index) => {
+    const percentage = formatFinitePercentage(expanse.amount, totalIncome);
+    (elemsPercentage[index] as HTMLSpanElement).innerText = percentage;
+  });
 };
