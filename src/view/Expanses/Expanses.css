@@ -39,3 +39,16 @@
 .expanses .item .right {
   color: var(--expense-color);
 }
+
+.expanses .item .right .number{
+  display: flex;
+  flex-grow: 1;
+}
+
+.expanses .item .right .number .amount{
+  flex: 2;
+}
+
+.expanses .item .right .number .percentage{
+  flex: 1;
+}
